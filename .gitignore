@@ -1,0 +1,25 @@
+# 编译产物
+*.exe
+*.obj
+*.o
+*.out
+*.dll
+*.so
+*.a
+*.lib
+# VSCode 本地配置（不要上传）
+.vscode/
+# 临时文件
+*.log
+*.zip
+*.rar
+*.tmp
+# CMake 构建目录（如果以后使用）
+build/
+cmake-build-*/
+# 运行时生成的文件
+*.cache
+*.ini
+# Windows 系统文件
+Thumbs.db
+desktop.ini

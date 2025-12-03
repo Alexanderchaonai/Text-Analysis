@@ -1,0 +1,4 @@
+This is a simple test file.
+This file is used to test the text analyzer.
+Text analyzer should count the frequency of each word.
+This is only a test.
