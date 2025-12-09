@@ -1,6 +1,6 @@
 # 文本词频统计与文本相似度分析系统（基于 AVL 树）
 
-本项目为《程序设计综合实践》课程设计，实现一个基于 **AVL 树** 的文本词频统计与文本相似度分析系统，并预留接口给 EasyX 图形界面进行可视化展示。
+本项目为《程序设计综合实践》课程设计，实现一个基于 **AVL 树** 的文本词频统计与文本相似度分析系统，并接口给 EasyX 图形界面进行可视化展示。
 
 ---
 
@@ -20,26 +20,28 @@
 ```
 文本分析/
 │
-├── include/                   # 头文件
-│   ├── TextAnalyzer.h         # 文本分析器（词频统计 + TopN）
-│   ├── Tokenizer.h            # 分词器
-│   └── WordFreqTree.h         # AVL 树（用于统计词频）
+├── include/                         # 头文件
+│   ├── TextAnalyzer.h               # 文本分析器（词频统计 + TopN）
+│   ├── TextSimilarity.h             # 文本相似度计算
+│   ├── Tokenizer.h                  # 分词器
+│   └── WordFreqTree.h               # AVL 树（用于统计词频）
 │
-├── src/                       # 源文件
-│   ├── TextAnalyzer.cpp       # 实现文本分析逻辑
-│   ├── Tokenizer.cpp          # 实现分词逻辑
-│   ├── WordFreqTree.cpp       # AVL 树实现
-│   └── test_main.cpp          # 测试 main（非最终版）
+├── src/                             # 源文件
+│   ├── TextAnalyzer.cpp             # 实现文本分析逻辑
+│   ├── TextSimilarity.cpp           # 实现相似度计算逻辑
+│   ├── Tokenizer.cpp                # 实现分词逻辑
+│   ├── WordFreqTree.cpp             # AVL 树实现
+│   └── test_main.cpp                # 测试 main（非最终版）
 │
-├── BST.cpp                    # 普通二叉搜索树
+├── BST.cpp                          # 普通二叉搜索树（练习代码，可选）
 │
-├── text.txt                   # 测试用文本文件（可保留）
+├── text.txt                         # 测试用文本文件
 │
-├── README.md                  # 项目说明文档（已生成）
+├── README.md                        # 项目说明文档
 │
-└── .gitignore                 # Git 忽略规则（避免上传 exe/.vscode 等）
+└── .gitignore                       # Git 忽略规则（避免上传 exe / .vscode 等）
 
-
+```
 ---
 
 ## 三、模块说明
@@ -96,6 +98,15 @@ std::vector<std::string> tokenize(const std::string &text);
 ```
 
 ---
+### 4.文本相似度（Text Similarity）
+基于词频向量计算两文本相似度（默认采用余弦相似度）。
+
+接口：
+```
+double calculate(const TextAnalyzer& t1, const TextAnalyzer& t2);             // 传对象
+double calculate(const std::string& file1, const std::string& file2);         // 传文件路径
+
+```
 
 ## 四、编译与运行方式
 
@@ -123,15 +134,15 @@ text/text1.txt
 
 ## 五、小组分工（示例）
 
-- **成员 A：AVL 树与词频统计模块**
+- **左津玮：AVL 树与词频统计模块**
   - 负责 AVL 树节点设计、插入逻辑、平衡调整  
   - 实现 `WordFreqTree` + `TextAnalyzer` 模块  
 
-- **成员 B：文本相似度计算**
+- **陈彦宇：文本相似度计算**
   - 基于词频向量计算文本相似度（如余弦相似度）  
   - 为 EasyX 界面提供相似度结果  
 
-- **成员 C：图形界面（EasyX）**
+- **周显昊：图形界面（EasyX）**
   - 使用 EasyX 绘制窗口、按钮、文本框  
   - 显示 Top-N 高频词（列表或柱状图）  
   - 调用 `TextAnalyzer` 进行文本加载与分析  

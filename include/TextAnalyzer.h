@@ -16,9 +16,10 @@ public:
     void insertWord(const std::string &word);
 
     void printTopN(int n) const;
+    std::vector<StringCount> getTopN(int n) const;
     int getTreeHeight() const;
+    std::vector<StringCount> toVector() const;
 
-    // AVL 不再需要 getFrequencyMap()
 };
 
 #endif

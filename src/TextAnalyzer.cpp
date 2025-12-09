@@ -54,6 +54,25 @@ void TextAnalyzer::printTopN(int n) const
         if (++cnt >= n) break;
     }
 }
+vector<StringCount> TextAnalyzer::getTopN(int n) const
+{
+    vector<StringCount> vec = tree.toVector();
+
+    sort(vec.begin(), vec.end(), [](const StringCount &a, const StringCount &b) {
+        if (a.num != b.num) return a.num > b.num;
+        return a.str < b.str;
+    });
+
+    if (vec.size() > n)
+        vec.resize(n);
+
+    return vec;
+}
+std::vector<StringCount> TextAnalyzer::toVector() const
+{
+    return tree.toVector();
+}
+
 
 //   获得 AVL 树的高度
 int TextAnalyzer::getTreeHeight() const
